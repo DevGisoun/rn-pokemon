@@ -1,0 +1,69 @@
+{
+    "name": "Pokemon with React Native",
+    "image": "ghcr.io/devgisoun/react-native-expo:stable",
+    "features": {},
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-vscode.vscode-typescript-next",
+                "bradlc.vscode-tailwindcss",
+                "esbenp.prettier-vscode",
+                "ms-vscode.vscode-eslint",
+                "expo.vscode-expo-tools",
+                "ms-vscode.vscode-react-native",
+                "ms-vscode.vscode-json",
+                "formulahendry.auto-rename-tag",
+                "christian-kohler.path-intellisense",
+                "dbaeumer.vscode-eslint"
+            ],
+            "settings": {
+                "terminal.integrated.defaultProfile.linux": "bash",
+                "typescript.preferences.quoteStyle": "single",
+                "javascript.preferences.quoteStyle": "single",
+                "editor.formatOnSave": true,
+                "editor.defaultFormatter": "esbenp.prettier-vscode",
+                "editor.codeActionsOnSave": {
+                    "source.fixAll.eslint": "explicit"
+                }
+            }
+        }
+    },
+    "forwardPorts": [5555, 8081, 8082, 19000, 19001, 19002, 19006],
+    "portsAttributes": {
+        "5555": {
+            "label": "ADB TCP/IP",
+            "onAutoForward": "silent"
+        },
+        "8081": {
+            "label": "Metro bundler",
+            "onAutoForward": "notify"
+        },
+        "8082": {
+            "label": "Metro bundler (alternative)",
+            "onAutoForward": "silent"
+        },
+        "19000": {
+            "label": "Expo DevTools",
+            "onAutoForward": "openPreview"
+        },
+        "19001": {
+            "label": "Expo (LAN)",
+            "onAutoForward": "silent"
+        },
+        "19002": {
+            "label": "Expo (Local)",
+            "onAutoForward": "silent"
+        },
+        "19006": {
+            "label": "Expo (Webpack)",
+            "onAutoForward": "silent"
+        }
+    },
+    "containerEnv": {
+        "REACT_NATIVE_PACKAGER_HOSTNAME": "0.0.0.0",
+        "EXPO_DEVTOOLS_LISTEN_ADDRESS": "0.0.0.0"
+    },
+    "postAttachCommand": "adb connect host.docker.internal:5555",
+    "remoteUser": "root",
+    "workspaceFolder": "/workspace"
+}
