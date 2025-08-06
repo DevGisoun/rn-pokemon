@@ -17,7 +17,7 @@ export function PokemonTypeBadge({ type }: PokemonTypeBadgeProps) {
     return (
         <>
             <View
-                className="px-4 py-[6px] rounded-md"
+                className="px-3 py-[6px] rounded-md"
                 style={{ backgroundColor: colors.background }}
             >
                 <PokeText style={{ color: colors.text }}>

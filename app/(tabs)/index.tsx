@@ -7,7 +7,7 @@ export default function HomeScreen() {
 
     return (
         <View className="flex-1 p-4 bg-white">
-            <View className="p-4 gap-4">
+            <View className="p-0 gap-4">
                 <AppHeader />
                 <PokeText className="text-2xl">
                     Gotta catch &apos;em all
@@ -16,11 +16,11 @@ export default function HomeScreen() {
             <FlatList
                 data={pokemonIds}
                 keyExtractor={(item) => item.id.toString()}
+                showsVerticalScrollIndicator={false}
                 numColumns={2}
                 columnWrapperStyle={{ gap: 16 }}
                 ItemSeparatorComponent={({ item }) => <View className="h-4" />}
                 renderItem={({ item }) => <PokemonCard number={item.id} />}
-                showsVerticalScrollIndicator={false}
             />
         </View>
     );

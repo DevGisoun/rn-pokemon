@@ -16,7 +16,7 @@ export async function getPokemonData(id: number): Promise<Pokemon | null> {
             .filter((obj: any) => obj.language.name === 'ko')
             .map((obj: any) => obj.name);
 
-        if (koreanName.length > 0) data.name = koreanName[0];
+        if (koreanName.length > 0) data.koreanName = koreanName[0];
 
         for (let i = 0; i < data.types.length; i++) {
             const resType = await axios.get(data.types[i].type.url);

@@ -54,31 +54,36 @@ export function PokemonCard({ number }: PokemonCardProps) {
     return (
         <>
             <Pressable
-                className="flex-1 p-4 bg-white rounded-2xl elevation-sm"
+                className="flex-1 p-4 bg-white border rounded-2xl elevation-sm"
                 onPress={() => setModalVisible(!modalVisible)}
             >
+                <View className="flex-row gap-2">
+                    {pokemon.types.map((type) => (
+                        <PokemonTypeBadge
+                            key={generateUUIDv4()}
+                            type={type.type}
+                        />
+                    ))}
+                </View>
                 <Image
                     source={{
                         uri: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png`,
                     }}
                     className="w-full aspect-square object-contain"
                 />
-                <View className="gap-4 -mt-4">
-                    <View>
-                        <Text className="text-2xl font-bold">
-                            {pokemon.name}
-                        </Text>
+                <View className="-mt-4">
+                    <View className="gap-1">
+                        <View className="flex-row items-end gap-1">
+                            <Text className="text-xl font-bold">
+                                {pokemon.koreanName}
+                            </Text>
+                            <Text className="text-sm font-bold text-neutral-400">
+                                {pokemon.name}
+                            </Text>
+                        </View>
                         <PokeText className="text-neutral-500">
                             0 owned
                         </PokeText>
-                    </View>
-                    <View className="flex-row gap-2">
-                        {pokemon.types.map((type) => (
-                            <PokemonTypeBadge
-                                key={generateUUIDv4()}
-                                type={type.type}
-                            />
-                        ))}
                     </View>
                 </View>
             </Pressable>
