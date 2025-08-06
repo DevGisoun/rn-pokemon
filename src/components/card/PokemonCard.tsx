@@ -10,6 +10,7 @@ import {
     View,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { PokemonTypeBadge } from '../badge';
 import { PokeText } from '../common';
 
 interface PokemonCardProps {
@@ -19,8 +20,8 @@ interface PokemonCardProps {
 export function PokemonCard({ number }: PokemonCardProps) {
     const [modalVisible, setModalVisible] = useState<boolean>(false);
     const [loading, setLoading] = useState<boolean>(true);
-    const [pokemon, setPokemon] = useState<Pokemon | null>(null);
     const [error, setError] = useState(false);
+    const [pokemon, setPokemon] = useState<Pokemon | null>(null);
 
     useEffect(() => {
         const fetchInitialData = async () => {
@@ -78,14 +79,14 @@ export function PokemonCard({ number }: PokemonCardProps) {
                         </PokeText>
                     </View>
                     <View className="flex-row gap-2">
-                        <View className="bg-neutral-100 px-4 py-1 rounded-md">
-                            <PokeText className="text-neutral-400">
-                                노말
-                            </PokeText>
-                        </View>
-                        <View className="bg-sky-100 px-4 py-1 rounded-md">
-                            <PokeText className="text-sky-400">물</PokeText>
-                        </View>
+                        {pokemon.types.map((type) => (
+                            <>
+                                <PokemonTypeBadge
+                                    key={type.slot}
+                                    typeName={type.type.name}
+                                />
+                            </>
+                        ))}
                     </View>
                 </View>
             </Pressable>
@@ -104,16 +105,14 @@ export function PokemonCard({ number }: PokemonCardProps) {
                             </Text>
                             <View className="flex-row items-center gap-2">
                                 <View className="flex-row gap-2">
-                                    <View className="bg-neutral-100 px-4 py-[6px] rounded-md">
-                                        <PokeText className="text-neutral-400">
-                                            Normal
-                                        </PokeText>
-                                    </View>
-                                    <View className="bg-rose-100 px-4 py-[6px] rounded-md">
-                                        <PokeText className="text-rose-400">
-                                            Fire
-                                        </PokeText>
-                                    </View>
+                                    {pokemon.types.map((type) => (
+                                        <>
+                                            <PokemonTypeBadge
+                                                key={type.slot}
+                                                typeName={type.type.name}
+                                            />
+                                        </>
+                                    ))}
                                 </View>
                             </View>
                         </View>
