@@ -4,12 +4,15 @@ import { View } from 'react-native';
 import { PokeText } from '../common';
 
 interface PokemonTypeBadgeProps {
-    typeName: string;
+    type: {
+        name: string;
+        koreanName: string;
+    };
 }
 
-export function PokemonTypeBadge({ typeName }: PokemonTypeBadgeProps) {
+export function PokemonTypeBadge({ type }: PokemonTypeBadgeProps) {
     const colors =
-        pokemonTypeColors[typeName.toLowerCase()] || pokemonTypeColors.default;
+        pokemonTypeColors[type.name.toLowerCase()] || pokemonTypeColors.default;
 
     return (
         <>
@@ -17,7 +20,9 @@ export function PokemonTypeBadge({ typeName }: PokemonTypeBadgeProps) {
                 className="px-4 py-[6px] rounded-md"
                 style={{ backgroundColor: colors.background }}
             >
-                <PokeText style={{ color: colors.text }}>{typeName}</PokeText>
+                <PokeText style={{ color: colors.text }}>
+                    {type.koreanName}
+                </PokeText>
             </View>
         </>
     );

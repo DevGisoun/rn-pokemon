@@ -4,6 +4,10 @@ export interface Pokemon {
     sprites: { front_default: string };
     types: {
         slot: number;
-        type: { name: string };
+        type: {
+            url: string;
+            name: string;
+            koreanName: string;
+        };
     }[];
 }

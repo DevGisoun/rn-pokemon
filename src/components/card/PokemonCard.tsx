@@ -1,5 +1,6 @@
 import { getPokemonData } from '@/src/api';
 import { Pokemon } from '@/src/types';
+import { generateUUIDv4 } from '@/src/utils';
 import React, { useEffect, useState } from 'react';
 import {
     ActivityIndicator,
@@ -60,7 +61,7 @@ export function PokemonCard({ number }: PokemonCardProps) {
     return (
         <>
             <Pressable
-                className="w-1/2 p-4 bg-white rounded-2xl elevation-sm"
+                className="flex-1 p-4 bg-white rounded-2xl elevation-sm"
                 onPress={() => setModalVisible(!modalVisible)}
             >
                 <Image
@@ -80,12 +81,10 @@ export function PokemonCard({ number }: PokemonCardProps) {
                     </View>
                     <View className="flex-row gap-2">
                         {pokemon.types.map((type) => (
-                            <>
-                                <PokemonTypeBadge
-                                    key={type.slot}
-                                    typeName={type.type.name}
-                                />
-                            </>
+                            <PokemonTypeBadge
+                                key={generateUUIDv4()}
+                                type={type.type}
+                            />
                         ))}
                     </View>
                 </View>
@@ -106,12 +105,10 @@ export function PokemonCard({ number }: PokemonCardProps) {
                             <View className="flex-row items-center gap-2">
                                 <View className="flex-row gap-2">
                                     {pokemon.types.map((type) => (
-                                        <>
-                                            <PokemonTypeBadge
-                                                key={type.slot}
-                                                typeName={type.type.name}
-                                            />
-                                        </>
+                                        <PokemonTypeBadge
+                                            key={generateUUIDv4()}
+                                            type={type.type}
+                                        />
                                     ))}
                                 </View>
                             </View>
