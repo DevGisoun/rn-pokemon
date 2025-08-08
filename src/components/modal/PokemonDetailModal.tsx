@@ -22,25 +22,64 @@ export default function PokemonDetailModal({
     return (
         <Modal visible={visible} animationType="slide">
             <SafeAreaView className="p-4 gap-4">
-                <View className="items-center">
-                    <Image
-                        source={{
-                            uri: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png`,
-                        }}
-                        className="w-3/4 aspect-square object-contain"
-                    />
-                    <View className="gap-4 items-center">
-                        <Text className="text-4xl font-bold">
-                            {pokemon.name}
-                        </Text>
-                        <View className="flex-row items-center gap-2">
-                            <View className="flex-row gap-2">
-                                {pokemon.types.map((type) => (
-                                    <PokemonTypeBadge
-                                        key={generateUUIDv4()}
-                                        type={type.type}
-                                    />
-                                ))}
+                <View className="flex-row">
+                    <View className="items-center pr-4">
+                        <Image
+                            source={{
+                                uri: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png`,
+                            }}
+                            className="w-2/5 aspect-square object-contain border"
+                        />
+                        <View className="gap-4 items-center">
+                            <Text className="text-4xl font-bold">
+                                {pokemon.koreanName}
+                            </Text>
+                            <View className="flex-row items-center gap-2">
+                                <View className="flex-row gap-2">
+                                    {pokemon.types.map((type) => (
+                                        <PokemonTypeBadge
+                                            key={generateUUIDv4()}
+                                            type={type.type}
+                                        />
+                                    ))}
+                                </View>
+                            </View>
+                        </View>
+                    </View>
+                    <View className="w-[1px] h-full bg-neutral-200 mx-2" />
+                    <View className="flex-1 pl-4">
+                        <View className="flex-row flex-wrap">
+                            <View className="w-1/2 items-center p-1">
+                                <Text className="text-sm font-bold text-neutral-300">
+                                    HEIGHT
+                                </Text>
+                                <Text className="text-sm font-bold text-black">
+                                    1.7
+                                </Text>
+                            </View>
+                            <View className="w-1/2 items-center p-1">
+                                <Text className="text-sm font-bold text-neutral-300">
+                                    HEIGHT
+                                </Text>
+                                <Text className="text-sm font-bold text-black">
+                                    1.7
+                                </Text>
+                            </View>
+                            <View className="w-1/2 items-center p-1">
+                                <Text className="text-sm font-bold text-neutral-300">
+                                    HEIGHT
+                                </Text>
+                                <Text className="text-sm font-bold text-black">
+                                    1.7
+                                </Text>
+                            </View>
+                            <View className="w-1/2 items-center p-1">
+                                <Text className="text-sm font-bold text-neutral-300">
+                                    HEIGHT
+                                </Text>
+                                <Text className="text-sm font-bold text-black">
+                                    1.7
+                                </Text>
                             </View>
                         </View>
                     </View>
